@@ -1,3 +1,12 @@
+import sys
+import os
+# This line tells the computer to look "up" one folder for your files
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+import budget
+import expense
+import expense_service
+import users
 from database import database
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
