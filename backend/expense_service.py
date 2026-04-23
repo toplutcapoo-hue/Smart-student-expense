@@ -1,4 +1,4 @@
-from .expense import Expense
+from . import Expense
 from . database.db_manager import insert_expense, get_expenses
 
 def add_expense(name, amount, category):
