@@ -6,8 +6,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from .import budget
 from .import expense
 from .import expense_service
-import users
-from database import database
+from .import users
+from .database import database
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
@@ -32,7 +32,7 @@ def register(request):
 def dashboard(request):
     expenses = Expense.objects.filter(user=request.user).order_by('-date')
     total = expenses.aggregate(Sum('amount'))['amount__sum'] or 0
-    return render(request, 'expenses/dashboard.html', {
+    return render(request, 'dashboard.html', {
         'expenses': expenses,
         'total_spent': total,
         'categories': Category.objects.all()
